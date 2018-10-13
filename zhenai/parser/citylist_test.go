@@ -21,7 +21,7 @@ func TestParserCityList(t *testing.T) {
 		"http://www.zhenai.com/zhenghun/alashanmeng",
 	}
 	expectedItem := []string{
-		"阿坝", "阿克苏", "阿拉善盟",
+		"City:阿坝", "City:阿克苏", "City:阿拉善盟",
 	}
 
 	for i, url := range expectedUrl {

@@ -21,7 +21,7 @@ func Fetch(url string) ([]byte, error) {
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("Error http code:", resp.StatusCode)
-		return nil, fmt.Errorf("fetcher get %s error, code: %d", resp.StatusCode)
+		return nil, fmt.Errorf("fetcher get %s error, code: %d", url, resp.StatusCode)
 	}
 	reader := bufio.NewReader(resp.Body)
 	e := getEncoding(reader)

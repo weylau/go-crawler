@@ -1,7 +1,7 @@
 package engine
 
 import (
-	"go-crawler-zhenai/fetcher"
+	"go-crawler/fetcher"
 	"log"
 )
 
@@ -15,8 +15,6 @@ func Run(seeds ...Request) {
 		r := requests[0]
 		requests = requests[1:]
 		body, err := fetcher.Fetch(r.Url)
-		log.Printf("Fetcher url:%s", body)
-		return
 		log.Printf("Fetcher url:%s", r.Url)
 		if err != nil {
 			log.Printf("Fetcher error:%v, url:%s", err, r.Url)
@@ -25,7 +23,7 @@ func Run(seeds ...Request) {
 		parserResult := r.ParserFunc(body)
 		requests = append(requests, parserResult.Results...)
 		for _, item := range parserResult.Items {
-			log.Printf("get item %s ", item)
+			log.Printf("get item %v ", item)
 		}
 	}
 }
