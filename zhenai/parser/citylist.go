@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"go-crawler-zhenai/engine"
+	"go-crawler/engine"
 	"regexp"
 )
 
@@ -13,10 +13,10 @@ func ParserCityList(content []byte) engine.ParserResult {
 	all := re.FindAllSubmatch(content, -1)
 	result := engine.ParserResult{}
 	for _, e := range all {
-		result.Items = append(result.Items, string(e[2]))
+		result.Items = append(result.Items, "City:"+string(e[2]))
 		result.Results = append(result.Results, engine.Request{
 			Url:        string(e[1]),
-			ParserFunc: engine.NilParser,
+			ParserFunc: ParserCity,
 		})
 	}
 	return result
